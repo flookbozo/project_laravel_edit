@@ -45,9 +45,10 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
   name: "resetpasswordHospital",
-
+  props: ["app"],
   data() {
     return {
       hospitals: [],
@@ -55,24 +56,19 @@ export default {
     };
   },
   created() {
-    axios
-      .get(`api/resethospital/${this.$route.params.id}`)
-      .then((response) => {
-        this.post = response.data;
-        console.log(this.post);
-      });
+    axios.get(`api/resethospital/${this.$route.params.id}`)
+    .then((response) => {
+      this.post = response.data;
+      console.log(this.post);
+    });
   },
   methods: {
     updatePost() {
       
-      axios
-        .post(
-          `api/resethospital/${this.$route.params.id}`,
-          this.post
-        )
-        .then((response) => {
-          this.$router.push({ name: "login" });
-        });
+      axios.post(`api/resethospital/${this.$route.params.id}`,this.post)
+      .then((response) => {
+        this.$router.push({ name: "login" });
+      });
 
     },
   },

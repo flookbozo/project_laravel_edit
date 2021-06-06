@@ -218,6 +218,7 @@
 import axios from "axios";
 export default {
    name: "edituser",
+   props: ["app"],
   data() {
     return {
       post: null,
@@ -225,23 +226,18 @@ export default {
     };
   },
   created() {
-    axios
-      .get(`api/edituser/${this.$route.params.id}`)
-      .then((response) => {
-        this.post = response.data;
-        console.log(this.post);
-      });
+    axios.get(`api/edituser/${this.$route.params.id}`)
+    .then((response) => {
+      this.post = response.data;
+      console.log(this.post);
+    });
   },
   methods: {
     updatePost() {
-      axios
-        .post(
-          `api/edituser/${this.$route.params.id}`,
-          this.post
-        )
-        .then((response) => {
-          this.$router.push({ name: "profile" });
-        });
+      axios.post(`api/edituser/${this.$route.params.id}`,this.post)
+      .then((response) => {
+        this.$router.push({ name: "profile" });
+      });
     },
   },
 };
