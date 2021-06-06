@@ -203,6 +203,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -213,7 +214,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://127.0.0.1:8000/api/edithospital/${this.$route.params.id}`)
+      .get(`api/edithospital/${this.$route.params.id}`)
       .then((response) => {
         this.post = response.data;
         console.log(this.post);
@@ -223,7 +224,7 @@ export default {
     updatePost() {
       axios
         .post(
-          `http://127.0.0.1:8000/api/edithospital/${this.$route.params.id}`,
+          `api/edithospital/${this.$route.params.id}`,
           this.post
         )
         .then((response) => {

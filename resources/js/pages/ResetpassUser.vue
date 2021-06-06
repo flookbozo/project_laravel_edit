@@ -56,7 +56,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://127.0.0.1:8000/api/resetuser/${this.$route.params.id}`)
+      .get(`api/resetuser/${this.$route.params.id}`)
       .then((response) => {
         this.post = response.data;
         console.log(this.post);
@@ -67,7 +67,7 @@ export default {
       
       axios
         .post(
-          `http://127.0.0.1:8000/api/resetuser/${this.$route.params.id}`,
+          `api/resetuser/${this.$route.params.id}`,
           this.post
         )
         .then((response) => {

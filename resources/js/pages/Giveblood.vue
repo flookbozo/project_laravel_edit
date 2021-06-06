@@ -103,7 +103,7 @@ export default {
         };
         this.giveblood.idHospital = this.app.user.id;
         Axios
-          .post("http://127.0.0.1:8000/api/givebloods", this.giveblood)
+          .post("api/givebloods", this.giveblood)
           .then((response) =>{
             this.$router.push("/profilegiveblood");
             console.log(response.data)

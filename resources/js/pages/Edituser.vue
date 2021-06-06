@@ -215,6 +215,7 @@
   </div>
 </template>
 <script>
+import axios from "axios";
 export default {
    name: "edituser",
   data() {
@@ -225,7 +226,7 @@ export default {
   },
   created() {
     axios
-      .get(`http://127.0.0.1:8000/api/edituser/${this.$route.params.id}`)
+      .get(`api/edituser/${this.$route.params.id}`)
       .then((response) => {
         this.post = response.data;
         console.log(this.post);
@@ -235,7 +236,7 @@ export default {
     updatePost() {
       axios
         .post(
-          `http://127.0.0.1:8000/api/edituser/${this.$route.params.id}`,
+          `api/edituser/${this.$route.params.id}`,
           this.post
         )
         .then((response) => {
